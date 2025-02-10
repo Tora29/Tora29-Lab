@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { breakpoint } from '../../stores/StoreBreakpoint';
+	import { boolBreakpoint } from '../../stores/StoreBreakpoint';
 	import NavHamburger from '$lib/components/navigation/NavHamburger.svelte';
-
-	let isOpen: boolean = false;
 
 	// ヘッダーメニュー用
 	const headerItems = [
@@ -21,7 +19,7 @@
 		<p class="logo-right">29</p>
 	</h1>
 	<!-- 1024px 未満なら「ハンバーガー」 / 1024px 以上なら「通常ナビ」 -->
-	{#if $breakpoint.isMedium || $breakpoint.isSmall || $breakpoint.isXSmall}
+	{#if $boolBreakpoint.isMedium || $boolBreakpoint.isSmall || $boolBreakpoint.isXSmall}
 		<!-- ハンバーガーメニュー -->
 		<NavHamburger />
 	{:else}
