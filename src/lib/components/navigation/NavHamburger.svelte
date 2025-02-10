@@ -54,7 +54,7 @@
 		background-color: var(--color-background);
 		box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 		padding: 1rem;
-		z-index: 2;
+		z-index: 3;
 	}
 
 	.nav-menu-list {
@@ -81,6 +81,6 @@
 		width: 100vw;
 		height: 100vh;
 		background: rgba(0, 0, 0, 0.4);
-		z-index: 1;
+		z-index: 2;
 	}
 </style>
