@@ -2,7 +2,8 @@
 	import '../app.css';
 	let { children } = $props();
 
-	import DisplayHeader from '$lib/components/navigation/NavHeader.svelte';
+	import NavHeader from '$lib/components/navigation/NavHeader.svelte';
+	import DisplayMainLogo from '$lib/components/display/DisplayMainLogo.svelte';
 	import '../lib/styles/global.css';
 </script>
 
@@ -13,6 +14,7 @@
 	/>
 </svelte:head>
 
-<!-- <DisplayHeader {headerItems} /> -->
-<DisplayHeader />
+<NavHeader />
+<DisplayMainLogo />
+
 {@render children()}
