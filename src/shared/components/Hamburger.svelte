@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly, fade } from 'svelte/transition';
 
-	let isOpen = false;
+	let isOpen = $state(false);
 
 	function toggle() {
 		isOpen = !isOpen;
@@ -9,7 +9,8 @@
 </script>
 
 <div class="container">
-	<button class="btn-menu material-symbols-outlined" on:click={toggle}> menu </button>
+	<!-- イベント属性を onclick に変更 -->
+	<button class="btn-menu material-symbols-outlined" onclick={toggle}> menu </button>
 	{#if isOpen}
 		<div
 			class="overlay"
@@ -17,12 +18,12 @@
 			tabindex="0"
 			in:fade
 			out:fade
-			on:click={() => (isOpen = false)}
-			on:keydown={(e) => e.key === 'Enter' && (isOpen = false)}
+			onclick={() => (isOpen = false)}
+			onkeydown={(e) => e.key === 'Enter' && (isOpen = false)}
 		></div>
 		<nav class="nav-menu" in:fly={{ x: 200, duration: 300 }} out:fly={{ x: 200, duration: 300 }}>
 			<ul class="nav-menu-list">
-				<button class="btn-close material-symbols-outlined" on:click={toggle}> close </button>
+				<button class="btn-close material-symbols-outlined" onclick={toggle}> close </button>
 				<li><a href="#aboutme">ABOUT ME</a></li>
 				<li><a href="#work">WORK</a></li>
 				<li><a href="#history">HISTORY</a></li>
@@ -64,7 +65,9 @@
 	}
 
 	.btn-close {
+		font-size: 2rem;
 		margin-left: auto;
+		margin-bottom: 1rem;
 	}
 
 	.nav-menu li {
