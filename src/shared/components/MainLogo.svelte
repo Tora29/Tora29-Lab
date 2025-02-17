@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { strBreakpoint } from '../../stores/StoreBreakpoint';
+	import { strBreakpoint } from '$shared/stores/breakpointStore';
 </script>
 
 <div class="main-logo {$strBreakpoint}">
@@ -67,6 +67,7 @@
 				}
 			}
 		}
+
 		&.isMedium {
 			height: 400px;
 			justify-content: center;
@@ -80,6 +81,7 @@
 				}
 			}
 		}
+
 		&.isSmall {
 			height: 300px;
 			justify-content: center;
@@ -93,6 +95,7 @@
 				}
 			}
 		}
+		
 		&.isXSmall {
 			height: 200px;
 			justify-content: center;

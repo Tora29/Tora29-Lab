@@ -1,10 +1,12 @@
 <script lang="ts">
-	import '../app.css';
-	let { children } = $props();
+	import '$shared/styles/app.css';
+	import '$shared/styles/global.css';
 
-	import NavHeader from '$lib/components/navigation/NavHeader.svelte';
-	import DisplayMainLogo from '$lib/components/display/DisplayMainLogo.svelte';
-	import '../lib/styles/global.css';
+	import Header from '$widgets/header/ui/Header.svelte';
+	import MainLogo from '$shared/components/MainLogo.svelte';
+
+
+	let { children } = $props();
 </script>
 
 <svelte:head>
@@ -14,7 +16,7 @@
 	/>
 </svelte:head>
 
-<NavHeader />
-<DisplayMainLogo />
+<Header />
+<MainLogo />
 
 {@render children()}
