@@ -19,6 +19,11 @@ jobs:
         with:
           node-version: 20
 
+      - name: Astro 用に静的アセットをコピー
+        run: |
+          mkdir -p public
+          cp -R src/shared/static/* public/
+
       - name: 依存関係をインストールしてビルド
         run: |
           npm ci
