@@ -1,4 +1,4 @@
-name: S3, Cloudfront を用いてprod deploy を行う
+name: Deploy to S3 and CloudFront
 
 on:
   push:
@@ -18,11 +18,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-
-      - name: Astro 用に静的アセットをコピー
-        run: |
-          mkdir -p public
-          cp -R src/shared/static/* public/
 
       - name: 依存関係をインストールしてビルド
         run: |
