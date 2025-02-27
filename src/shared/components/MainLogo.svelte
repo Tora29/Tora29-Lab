@@ -17,7 +17,7 @@
 		align-items: center;
 		width: 100%;
 		height: 500px;
-		background-image: url('/img/main-logo.webp');
+		background-image: url('$shared/static/img/main-logo.webp');
 		background-size: cover;
 		background-position: center;
 
