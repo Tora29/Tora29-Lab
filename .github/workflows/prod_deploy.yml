@@ -29,6 +29,15 @@ jobs:
           npm ci
           npm run astro-build
 
+      - name: Terraform の初期化
+        run: terraform init
+
+      - name: Terraform の準備
+        run: terraform plan -out=tfplan
+
+      - name: Terraform の実行
+        run: terraform apply -auto-approve tfplan
+
       - name: AWS CLI の設定
         uses: aws-actions/configure-aws-credentials@v2
         with:
