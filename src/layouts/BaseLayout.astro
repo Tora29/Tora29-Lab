@@ -1,0 +1,22 @@
+---
+import '$shared/styles/app.css';
+import '$shared/styles/global.css';
+import Header from '$widgets/header/ui/Header.svelte';
+import MainLogo from '$shared/components/MainLogo.svelte';
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <title>Tora29's Lab</title>
+  </head>
+  <body>
+    <Header client:load />
+    <MainLogo client:load />
+    <slot />
+  </body>
+</html>

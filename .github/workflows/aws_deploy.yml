@@ -38,7 +38,7 @@ jobs:
       # S3 へアップロード
       - name: Deploy to S3
         run: |
-          aws s3 sync ./build s3://tora29-lab-svelte-app --delete
+          aws s3 sync ./dist s3://tora29-lab-svelte-app --delete
 
       # CloudFront キャッシュを無効化
       - name: Invalidate CloudFront cache
