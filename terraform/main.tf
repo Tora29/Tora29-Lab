@@ -5,7 +5,6 @@ provider "aws" {
 # S3 バケットの作成
 resource "aws_s3_bucket" "site_bucket" {
   bucket = "tora29-lab-svelte-app"
-  acl    = "public-read"
 
   website {
     index_document = "index.html"
@@ -13,7 +12,7 @@ resource "aws_s3_bucket" "site_bucket" {
   }
 }
 
-# S3 バケットポリシー（オプション: 公開ウェブサイトの場合）
+# S3 バケットポリシー
 resource "aws_s3_bucket_policy" "site_bucket_policy" {
   bucket = aws_s3_bucket.site_bucket.id
   policy = jsonencode({
