@@ -29,6 +29,11 @@ jobs:
           npm ci
           npm run astro-build
 
+      - name: Terraform のセットアップ
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.5.4
+
       - name: Terraform の初期化
         run: |
           cd terraform
