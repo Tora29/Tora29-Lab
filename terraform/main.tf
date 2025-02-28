@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket  = "my-terraform-state-bucket"
+    key     = "tora29-lab-svelte-app/terraform.tfstate"
+    region  = "ap-northeast-1"
+    encrypt = true
+  }
+}
+
 provider "aws" {
   region = "ap-northeast-1"
 }
@@ -14,8 +23,7 @@ resource "aws_s3_bucket" "site_bucket" {
 
 # S3 バケットポリシー
 resource "aws_s3_bucket_public_access_block" "site_bucket_public_access" {
-  bucket = aws_s3_bucket.site_bucket.id
-
+  bucket                  = aws_s3_bucket.site_bucket.id
   block_public_acls       = false
   block_public_policy     = false
   ignore_public_acls      = false
@@ -25,13 +33,13 @@ resource "aws_s3_bucket_public_access_block" "site_bucket_public_access" {
 resource "aws_s3_bucket_policy" "site_bucket_policy" {
   bucket = aws_s3_bucket.site_bucket.id
   policy = jsonencode({
-    Version = "2012-10-17"
+    Version   = "2012-10-17",
     Statement = [
       {
-        Sid       = "PublicReadGetObject"
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:GetObject"
+        Sid       = "PublicReadGetObject",
+        Effect    = "Allow",
+        Principal = "*",
+        Action    = "s3:GetObject",
         Resource  = "${aws_s3_bucket.site_bucket.arn}/*"
       }
     ]
