@@ -2,13 +2,13 @@ terraform {
   backend "s3" {
     bucket  = "my-terraform-state-bucket"
     key     = "tora29-lab-svelte-app/terraform.tfstate"
-    region  = "ap-northeast-1"
+    region  = "us-west-2"
     encrypt = true
   }
 }
 
 provider "aws" {
-  region = "ap-northeast-1"
+  region = "us-west-2"
 }
 
 # S3 バケットの作成
