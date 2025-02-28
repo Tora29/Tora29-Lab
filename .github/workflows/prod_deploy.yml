@@ -9,6 +9,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ap-northeast-1
 
     steps:
       - name: リポジトリをチェックアウト
@@ -42,19 +46,12 @@ jobs:
       - name: Terraform の準備
         run: |
           cd terraform
-           terraform plan -out=tfplan
+          terraform plan -out=tfplan
 
       - name: Terraform の実行
         run: |
           cd terraform
           terraform apply -auto-approve tfplan
-
-      - name: AWS CLI の設定
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-1 # 東京リージョン
 
       - name: S3 へアップロード
         run: |
